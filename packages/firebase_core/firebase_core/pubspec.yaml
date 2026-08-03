@@ -31,18 +31,18 @@ dev_dependencies:
 
 flutter:
   plugin:
+    # FORK: Android-only plugin registration. See FORK.md at the repository root.
+    # The ios/macos/windows entries are deliberately absent so the Flutter tool
+    # never registers this plugin outside Android: no pod is installed, nothing
+    # is added to the generated registrants, and no Firebase native SDK is
+    # linked into those builds. The native sources under ios/, macos/ and
+    # windows/ are left untouched to keep this fork a minimal diff.
     platforms:
       android:
         package: io.flutter.plugins.firebase.core
         pluginClass: FlutterFirebaseCorePlugin
-      ios:
-        pluginClass: FLTFirebaseCorePlugin
-      macos:
-        pluginClass: FLTFirebaseCorePlugin
       web:
         default_package: firebase_core_web
-      windows:
-        pluginClass: FirebaseCorePluginCApi
 
 firebase:
   google_services_gradle_plugin_version: '4.4.4'

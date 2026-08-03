@@ -35,13 +35,15 @@ dev_dependencies:
 
 flutter:
   plugin:
+    # FORK: Android-only plugin registration. See FORK.md at the repository root.
+    # The ios/macos entries are deliberately absent so the Flutter tool never
+    # registers this plugin outside Android: no pod is installed, nothing is
+    # added to the generated registrants, and no Firebase native SDK is linked
+    # into those builds. The native sources under ios/ and macos/ are left
+    # untouched to keep this fork a minimal diff.
     platforms:
       android:
         package: io.flutter.plugins.firebase.messaging
         pluginClass: FlutterFirebaseMessagingPlugin
-      ios:
-        pluginClass: FLTFirebaseMessagingPlugin
-      macos:
-        pluginClass: FLTFirebaseMessagingPlugin
       web:
         default_package: firebase_messaging_web
